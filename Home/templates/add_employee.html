@@ -1,0 +1,74 @@
+{% extends 'base.html' %}{% block body %}
+{% load static %}
+
+<div class="container" style="margin-top: 190px;">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-lock"></span> Add New Employee </div>
+                <div class="panel-body">
+                    {% if error_message %}
+                    <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="{% url 'insertemployee' %}" method="post">{% csrf_token %}
+                     <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">
+                            Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name = "name" id="name" placeholder="Full Name" required>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="sex" class="col-sm-3 control-label">
+                           Sex</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name = "sex" id="sex" placeholder="Sex" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-3 control-label">
+                            Phone</label>
+                        <div class="col-sm-9">
+                            <input type="tel" class="form-control" name = "phone" id="phone" placeholder="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-sm-3 control-label">
+                            Address</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name = "address" id="address" placeholder="Address" required>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="date" class="col-sm-3 control-label">
+                           Date of join</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name = "date" id="date" placeholder="Joining date" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary" class="col-sm-3 control-label">
+                            Salary</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name = "salary" id="salary" placeholder="Salary" required>
+                        </div>
+                    </div>
+                     
+                    
+                    <div class="form-group last">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-success btn-sm">
+                                Add</button>
+                                 <button type="reset" class="btn btn-default btn-sm">
+                                Reset</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                
+        </div>
+    </div>
+</div>
+
+{%  endblock %}

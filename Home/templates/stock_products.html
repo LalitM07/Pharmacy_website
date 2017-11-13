@@ -1,0 +1,62 @@
+{% extends 'base.html' %}{% block body %} {% load static %}
+
+<div class="container-fluid" style="position: relative;margin-top: 90px;">
+ 
+  <div class="btn-group btn-group-justified" style=" ">
+    <a href="{% url 'customers' %}" class="btn btn-primary">Customers</a>
+    <a href="{% url 'allorders' %}" class="btn btn-primary">Orders</a>
+    <a href="{% url 'suppliers' %}" class="btn btn-primary">Suppliers</a>
+    <a href="{% url 'employees' %}" class="btn btn-primary">Employees</a>
+    <a href="{% url 'stock_products' %}" class="btn btn-primary">Products</a>
+    <a href="{% url 'viewfeedback' %}" class="btn btn-primary">Feedbacks</a>
+   
+  </div>
+</div>
+<div class="container-fluid" style="margin-top: 250px;">
+
+    <table id="example" class="table table-hover table-bordered table-responsive" cellspacing="0" width="100%">
+        <thead style="color: white;background-color: black">
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Quantity</th>
+                <th>Details</th>
+                 
+                 
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+               <th>Product ID</th>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Quantity</th>
+                <th>Details</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for i in details %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.description}}</td>
+                
+                 
+            {% endfor %}
+
+        </tbody>
+    </table>
+     <a href="{% url 'addstock' %}" class="btn btn-primary">Add Products</a>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+        $('select').addClass('mdb-select');
+        $('.mdb-select').material_select();
+    });
+</script>
+{% endblock %}

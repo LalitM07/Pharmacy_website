@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pharmacy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static 'css/tablestyle.css' %}" rel="stylesheet" type="text/css" media="all" />
+     
+
+<style type="text/css"></style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topnavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+
+           <a class="navbar-brand active fa fa-plus"  href="{% url 'home' %}">Anurag Pharmacy</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="contacts">
+                    <a href="{% url 'mail' %}">
+                        <span class="fa fa-envelope" aria-hidden="true"></span>&nbsp;Contact Us
+                    </a>
+                </li>
+            </ul>
+           
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li class="">
+                    <a href="{% url 'cart' %}">
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Your Cart
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;{{user.username}}&nbsp;
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{% url 'logout_user' %}">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;Log out
+                    </a>
+                </li>
+                {% else %}
+                <li class="">
+                    <a href="{% url 'signin' %}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp; Log in{% endif %}
+
+                    </a>
+                </li>
+                   
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="position: relative;margin-top: 90px;">
+ 
+  <div class="btn-group btn-group-justified" style=" ">
+    <a href="{% url 'customers' %}" class="btn btn-primary">Customers</a>
+    <a href="{% url 'allorders' %}" class="btn btn-primary">Orders</a>
+    <a href="{% url 'suppliers' %}" class="btn btn-primary">Suppliers</a>
+    <a href="{% url 'employees' %}" class="btn btn-primary">Employees</a>
+    <a href="{% url 'stock_products' %}" class="btn btn-primary">Products</a>
+    <a href="{% url 'viewfeedback' %}" class="btn btn-primary">Feedbacks</a>
+   
+  </div>
+</div>
+</body>
+</html>

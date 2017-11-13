@@ -1,0 +1,119 @@
+{% extends 'base.html' %}{% block body %} {% load static %}
+
+<div class="container-fluid" style="margin-top: 50px">
+<!-- about -->
+		<div class="c1" style="padding: 3em 2em;font-size: 1em ">			<h3> </h3>
+			
+	      <div class="c2">
+					<h4>Your shopping cart contains: <span>{{no_of_items}} Product(s)</span></h4>
+				<table class="timetable_sub">
+					<thead>
+						<tr>
+							<th>Product Name</th>
+							<th>Quantity</th>
+							<th>Price</th>
+						
+						</tr>
+					</thead>
+          <tbody>
+          {% for item in details %}
+            <tr class="c3">
+              <td class="c4">{{item.name}}</td>
+						  <td class="c4">{{item.quantity}}</td>
+						  <td class="c4">{{item.price}} Rs/-</td>
+					</tr>
+            {% endfor %}
+			 		</tbody>
+			 		<tfoot>
+            <tr style="background-color: green !important;" >
+                <th style="">{{no_of_items}}</th>
+                <th style="color: green;background-color: red"> Total </th>
+                <th>{{total}} Rs./-</th>
+               
+            </tr>
+        </tfoot>
+			 	</table>
+			</div>
+
+		
+				<div class="col-md-6 " style="float: left;">
+					<h4 style="text-align: center;margin-top: 80px">Fill Your Details</h4>
+					<form action="payment.html" method="post"> 
+						<div class="form-group">
+    						<label for="name">Name :</label>
+    						<input type="text" class="form-control" id="name" required>
+  					    </div>
+  					    <div class="form-group">
+    						<label for="phone">Contact No. :</label>
+    						<input type="text" class="form-control" id="phone" required="phone">
+  					    </div>
+  					     <div class="form-group">
+  					      
+    						<label for="landmark">Landmark:</label>
+    						<input type="text" class="form-control" id="landmark" required="">
+  					    </div>
+  					    <div class="form-group">
+    						<label for="town">Town :</label>
+    						<input type="town" class="form-control" id="town" required="">
+  					    </div>
+  					    <div class="form-group">
+    						<label for="pin">PIN :</label>
+    						<input type="pin" class="form-control" id="pin" required="PIN">
+  					    </div>
+  					    <div>
+  					    	<button type="submit" class="btn btn-success">Submit</button>
+  					    </div>
+     					
+					</form>
+						 
+				</div>
+				
+			</div>
+
+		</div>
+<!-- //about -->
+		</div>
+		
+	</div>
+  <footer class="myfooter" class="container-fluid" style="margin-top: 258px;height: 275px">
+    <div class="container-fluid" style="height: 150px !important">
+      <div class="row" >
+        <div class="col-sm-4">
+          <h4 class="title-widget" style="color: white">Anurag Pharmacy</h4>
+          <p>B.30/42-20, Shop no. 15-16,<br>
+                        C.B. Plaza Building , Madhav Market<br>
+                    Lanka , Varanasi</p>
+           
+          
+        </div>
+                <div class="col-sm-4">
+                    <ul class="social social-circle">
+                        <br><br><br><br>
+                        <li> <a href="#" class="icoFacebook"><i class="fa fa-facebook"></i></a></li>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li> <a href="#" class="icoTwitter"> <i class="fa fa-twitter"></i> </a> </li>
+                         
+                    </ul>
+                </div>
+       
+        <div class="col-sm-4 " style="">
+                    <div style="margin-right:">
+          <h4 class="title-widget">Category</h4>
+          <div class="category">
+            <a href="{% url 'wellness' %}" class="zoom">Wellness</a>
+            <a href="{% url 'health' %}" class="zoom">Health Aid</a><br>
+                        <a href="{% url 'baby' %}" class="zoom">Baby Care</a>
+            <a href="{% url 'prescription' %}" class="zoom">Prescription</a><br>
+            <a href="{% url 'personal' %}" class="zoom">Personal Care</a>
+                     
+          </div>
+                </div>
+        </div>
+        
+      </div>
+      <hr>
+      
+    <div class="row text-center" style="" > © 2017. All Rights Reserved</div>
+  </div> <!-- ./container -->
+    </footer>
+{% endblock %}
+<!-- //banner -->

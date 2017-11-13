@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- <link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" /> -->
+    <link href="cartstyle.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/cartstyle.css' %}" rel="stylesheet" type="text/css" media="all" />
+
+
+</head>
+
+<body>
+
+
+
+
+    <div class="container-fluid">
+        <div class="c1" style="padding: 3em 2em;font-size: 1em ">
+            <h3>Chec<span>kout</span></h3>
+            <div class="c2">
+                <h4>Your shopping cart contains: <span>3 Products</span></h4>
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            
+                            <th>Product</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in details %}
+                        <tr class="c3">
+                            
+                            <td class="c4-image">
+                                <a href="single.html"><img src="../static/images/{{item.pid}}.png" alt=" " class="img-responsive"></a>
+                            </td>
+                            
+                            <td class="c4">{{item.name}}</td>
+                            <td class="c4">{{item.quantity}}</td>
+                            <td class="c4">{{item.price}}</td>
+                            
+                            <td>
+                                <div class="rem" style="position: relative;">
+                                    <form action="{% url 'removecartitem' item.pid %}" method="post">{% csrf_token %}
+                                    <span class="glyphicon glyphicon-remove">
+                                       <input type="submit" value="Remove">
+                                    </span>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <a href="{% url 'checkout' %}" class="btn btn-success" role="button" style="font-size:1.3em;margin-left: 85%"  >Continue to Checkout</a>
+    </div>
+</body>
+
+</html>

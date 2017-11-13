@@ -1,0 +1,104 @@
+{% extends 'base.html' %}{% block body %} {% load static %}
+<div class="container-fluid" style="position: relative;margin-top: 90px;">
+ 
+  <div class="btn-group btn-group-justified" style=" ">
+    <a href="{% url 'prescription' %}" class="btn btn-primary">Prescription</a>
+    <a href="{% url 'baby' %}" class="btn btn-primary">Baby Care</a>
+    <a href="{% url 'personal' %}" class="btn btn-primary">Personal Care</a>
+    <a href="{% url 'health' %}" class="btn btn-primary">Health Aid</a>
+    <a href="{% url 'wellness' %}" class="btn btn-primary">Wellness</a>
+     
+   
+  </div>
+</div>
+
+<div class="container-fluid" style="margin-top: 100px;">
+
+    <table id="example" class="table table-hover table-bordered table-responsive" cellspacing="0" width="100%">
+        <thead style="color: white;background-color: black">
+            <tr>
+                <th>PID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Exp Date</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>PID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>View</th>
+
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for i in products %}
+            <tr>
+                <td>{{i.pid}}</td>
+                <td>{{i.pname}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.expdate}}</td>
+                <td>
+                    <a href="{% url 'details' i.pid %}" class="btn btn-info" role="button" style="width:70px;font-size:1em"  >Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+<footer class="myfooter" class="container-fluid" style="margin-top: 258px;height: 275px">
+        <div class="container-fluid" style="height: 150px !important">
+            <div class="row" >
+                <div class="col-sm-4">
+                    <h4 class="title-widget" style="color: white">Anurag Pharmacy</h4>
+                    <p>B.30/42-20, Shop no. 15-16,<br>
+                        C.B. Plaza Building , Madhav Market<br>
+                    Lanka , Varanasi</p>
+                     
+                    
+                </div>
+                <div class="col-sm-4">
+                    <ul class="social social-circle">
+                        <br><br><br><br>
+                        <li> <a href="#" class="icoFacebook"><i class="fa fa-facebook"></i></a></li>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li> <a href="#" class="icoTwitter"> <i class="fa fa-twitter"></i> </a> </li>
+                         
+                    </ul>
+                </div>
+             
+                <div class="col-sm-4 " style="">
+                    <div style="margin-right:">
+                    <h4 class="title-widget">Category</h4>
+                    <div class="category">
+                        <a href="{% url 'wellness' %}" class="zoom">Wellness</a>
+                        <a href="{% url 'health' %}" class="zoom">Health Aid</a><br>
+                        <a href="{% url 'baby' %}" class="zoom">Baby Care</a>
+                        <a href="{% url 'prescription' %}" class="zoom">Prescription</a><br>
+                        <a href="{% url 'personal' %}" class="zoom">Personal Care</a>
+                                 
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+            <hr>
+            
+        <div class="row text-center" style="" > © 2017. All Rights Reserved</div>
+    </div> <!-- ./container -->
+    </footer>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+        $('select').addClass('mdb-select');
+        $('.mdb-select').material_select();
+    });
+</script>
+
+ 
+{% endblock %}
